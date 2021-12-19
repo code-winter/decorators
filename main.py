@@ -19,12 +19,14 @@ def params_logger(path):
             result = function(*args, **kwargs)
             if result is None:
                 result = 'Void function'
-            with open(full_path, 'w', encoding='utf-8') as log_file:
+            with open(full_path, 'a', encoding='utf-8') as log_file:
                 log_file.write(f'Date and time: {str(current_time)}\n')
                 log_file.write(f'Function name: {name}\n')
                 log_file.write(f'Arguments: {str(args_list)}\n')
                 log_file.write(f'Keyword arguments: {str(kwargs_list)}\n')
                 log_file.write(f'Function result: {str(result)}\n')
+                log_file.write('_' * 100)
+                log_file.write('\n\n')
             return result
         return logger
     return func_logger
